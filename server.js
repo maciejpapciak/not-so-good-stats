@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
 }
 
-app.use('/api/profile', require('./routes/api/profile'));
+app.use('/api/profile', require('./api/profile'));
 
 const port = process.env.PORT || 8000;
 
