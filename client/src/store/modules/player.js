@@ -1,12 +1,33 @@
 import axios from 'axios';
 
-const state = {};
+const state = {
+	data: {},
+	error: {},
+	loading: true
+};
 
-const getters = {};
+const getters = {
+	getData: (state) => state
+};
 
-const actions = {};
+const actions = {
+	async fetchPlayerData({ commit }, nickname) {
+		state.loading = true;
+		try {
+			const response = await axios.get(`http://localhost/api/profile/${nickname}`);
+			commit('setData', response.data);
+			state.loading = false;
+		} catch (error) {
+			commit('setError', error.response.data.error);
+			this.loading = false;
+		}
+	}
+};
 
-const mutations = {};
+const mutations = {
+	setData: (state, data) => (state.data = data),
+	setError: (state, error) => (state.error = error)
+};
 
 export default {
 	state,
