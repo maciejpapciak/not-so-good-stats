@@ -65,13 +65,13 @@ router.get('/:nick', async (req, res) => {
 			});
 		} else {
 			res.status(404).json({
-				message: 'Player not found.'
+				error: 'Gracz o takim nicku nie istnieje.'
 			});
 		}
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({
-			message: 'Server error. Could not retrieve player id'
+			error: 'Błąd serwera. Spróbuj ponownie później.'
 		});
 	}
 });
