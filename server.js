@@ -1,7 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-var cors = require('cors');
+const helmet = require('helmet');
+const cors = require('cors');
 
 // Load env variables
 dotenv.config({ path: './config.env' });
@@ -17,6 +18,16 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/profile', require('./api/profile'));
 
 app.use('/api/nsgt', require('./api/nsgt'));
+
+// Handle production
+if (process.env.NODE_ENV === 'production') {
+	app.use(helmet());
+	// Set static folder
+	app.use(express.static(__dirname + '/public/'));
+
+	// Handle SPA
+	app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
+}
 
 const port = process.env.PORT || 8000;
 
