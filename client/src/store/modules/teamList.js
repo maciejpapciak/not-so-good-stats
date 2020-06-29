@@ -13,7 +13,7 @@ const getters = {
 const actions = {
 	async fetchTeamMember({ commit }, id) {
 		try {
-			const response = await axios.get(`http://localhost/api/nsgt/${id}`);
+			const response = await axios.get(`/api/nsgt/${id}`);
 			commit('setTeamMember', response.data);
 		} catch (error) {
 			commit('setError', error.response.data.error);

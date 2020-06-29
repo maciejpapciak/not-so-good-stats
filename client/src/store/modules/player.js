@@ -15,7 +15,7 @@ const actions = {
 		state.loading = true;
 		document.body.style.overflow = 'hidden hidden';
 		try {
-			const response = await axios.get(`http://localhost/api/profile/${nickname}`);
+			const response = await axios.get(`/api/profile/${nickname}`);
 			commit('setData', response.data);
 			commit('setError', '');
 			document.body.style.overflow = 'hidden auto';
