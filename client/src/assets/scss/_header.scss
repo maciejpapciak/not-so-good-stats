@@ -1,0 +1,17 @@
+.main-header {
+	margin: 1.5em auto;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media (min-width: 1120px) {
+		width: 80%;
+		margin: 0 auto;
+	}
+}
+
+.logo {
+	pointer-events: none;
+	max-width: 560px;
+	margin: 0 auto;
+}

@@ -1,0 +1,172 @@
+:root {
+	//--white: #d6d6d6;
+	--white: #fff;
+	--light-green: #69b578;
+	--green: #3a7d44;
+	--grey: #1c1c1c;
+	--dark-grey: #151515;
+
+	--ff-montserrat: 'Montserrat', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	pointer-events: none;
+}
+
+body {
+	background-color: var(--dark-grey);
+	font-family: var(--ff-montserrat);
+	color: var(--white);
+	font-size: clamp(13px, 2vw, 16px);
+	line-height: 1.2;
+	overflow-x: hidden;
+}
+
+#app {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.white-space {
+	height: 5em;
+}
+
+.main-header {
+	grid-area: header;
+}
+
+#search-form {
+	grid-area: searchform;
+}
+
+#profile {
+	grid-area: profile;
+	min-height: 250px;
+}
+
+#elo {
+	grid-area: elo;
+}
+
+#match-history {
+	grid-area: matchhistory;
+	// margin-bottom: 5em;
+}
+
+#nsgt {
+	grid-area: nsgt;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 1em;
+	max-width: 1100px;
+	width: 100%;
+	@media (min-width: 1120px) {
+		display: grid;
+		grid-gap: 20px;
+		margin-top: 3em;
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+.grid-player {
+	grid-template-areas: 'header header header nsgt' 'searchform searchform searchform nsgt'
+		'profile profile profile nsgt' 'elo elo elo elo' 'matchhistory matchhistory matchhistory matchhistory';
+}
+
+.grid-home {
+	grid-template-areas: 'header header header header' 'searchform searchform searchform searchform'
+		'nsgt nsgt nsgt nsgt';
+}
+
+.top-bar {
+	width: 100%;
+	height: 3px;
+	background-color: var(--light-green);
+	border-radius: 0 0 10px 10px;
+}
+
+.section {
+	background-color: var(--grey);
+	padding: 1.5em;
+	border-radius: 5px;
+	border-bottom: 2px solid var(--light-green);
+	margin-bottom: 1.75em;
+	@media (min-width: 1120px) {
+		margin-bottom: 0;
+	}
+}
+
+.section-heading {
+	font-weight: 400;
+	font-size: 1.25rem;
+	margin-bottom: 1.5em;
+	& span {
+		color: var(--light-green);
+	}
+}
+
+.separator {
+	width: 1px;
+	height: 50px;
+	background-color: #373737;
+}
+
+.error {
+	display: flex;
+	justify-content: space-around;
+}
+
+.error__img {
+	margin-bottom: -1.5em;
+	width: 32%;
+}
+
+.error__caption {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	& .section-heading {
+		text-transform: uppercase;
+		margin-bottom: .75em;
+	}
+}
+
+.btn {
+	all: unset;
+	background-color: var(--btn-bg);
+	padding: 0.25em 1.5em;
+	color: #fff;
+	letter-spacing: 1px;
+	cursor: pointer;
+	border-bottom: solid 3px;
+	border-color: var(--btn-border);
+	border-radius: 5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover,
+	&:active,
+	&:focus {
+		border-bottom: none;
+	}
+}
+
+#chart {
+	max-width: 1100px;
+	grid-area: chart;
+}

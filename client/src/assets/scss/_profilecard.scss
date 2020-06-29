@@ -1,0 +1,112 @@
+.profile-card {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.profile-card__user {
+	display: flex;
+}
+
+.profile-card__avatar img {
+	border-radius: 50%;
+	border: 2px solid var(--light-green);
+	max-width: 60px;
+}
+
+.profile-card__info {
+	margin: 0 .75em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	min-width: 110px;
+}
+
+.profile-card__info__nickname {
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+.profile-card__info__last-results--container {
+	font-size: 0.8rem;
+	color: #bbbbbb;
+}
+
+.last-result {
+	font-weight: 700;
+	letter-spacing: 0;
+	color: var(--clr-result);
+}
+
+.last-result-- {
+	&win {
+		--clr-result: #5ab528;
+	}
+	&loss {
+		--clr-result: #d64242;
+	}
+}
+
+.profile-stats {
+	margin: 1.5em 0;
+}
+
+.profile-card__lvl {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+}
+
+.profile-stats__list {
+	list-style: none;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	text-align: center;
+	flex-wrap: wrap;
+}
+
+.profile-stats__list-item {
+	min-width: 62px;
+}
+
+.profile-stats__item-heading {
+	font-weight: 400;
+	line-height: 1.6;
+	color: #d6d6d6;
+}
+
+.profile-stats__item-value {
+	font-weight: 700;
+}
+
+.profile-links {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--white);
+	text-decoration: none;
+	& .btn {
+		margin: 0 0.75em;
+		padding: 0.5em 1.5em;
+	}
+}
+
+.btn--steam {
+	--btn-bg: var(--dark-grey);
+	--btn-border: #000;
+}
+
+.btn--faceit {
+	--btn-bg: var(--light-green);
+	--btn-border: var(--green);
+}
+
+.btn img {
+	display: block;
+	height: 1em;
+	margin-right: 10px;
+	display: inline-block;
+	color: #fff;
+}

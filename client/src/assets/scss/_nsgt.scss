@@ -1,0 +1,27 @@
+.team-members {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.team-members__item {
+	@media (max-width: 730px) {
+		width: 100%;
+	}
+}
+
+.team-members__item a {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 1em 0;
+	width: 30%;
+	min-width: 300px;
+	text-decoration: none;
+	color: unset;
+
+	@media (max-width: 730px) {
+		width: 100%;
+	}
+}
