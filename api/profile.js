@@ -35,7 +35,7 @@ router.get('/:nick', async (req, res) => {
 			const { lifetime } = statsData;
 
 			// Get 20 last matches
-			const matchesResponse = await fetch(`${process.env.FACEIT_API_MATCH_URL}${player_id}/games/csgo?size=20`);
+			const matchesResponse = await fetch(`${process.env.FACEIT_API_MATCH_URL}${player_id}/games/csgo?size=21`);
 			const matchesData = await matchesResponse.json();
 			const lastMatches = matchesData.map((match) => {
 				return {
@@ -52,7 +52,6 @@ router.get('/:nick', async (req, res) => {
 					elo: match.elo
 				};
 			});
-
 			res.json({
 				player_id,
 				nickname,
