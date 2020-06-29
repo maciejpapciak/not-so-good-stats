@@ -1,8 +1,11 @@
 <template>
   <div class="profile-card">
     <div class="profile-card__user">
-      <div class="profile-card__avatar">
+      <div v-if="avatar" class="profile-card__avatar">
         <img :src="avatar" alt="user avatar" />
+      </div>
+      <div v-else class="profile-card__avatar">
+        <img :src="this.defaultAvatar" alt="user avatar" />
       </div>
       <div class="profile-card__info">
         <h3 class="profile-card__info__nickname">{{ nickname }}</h3>
@@ -32,6 +35,11 @@
 <script>
 export default {
   name: "ProfileBadge",
+  data() {
+    return {
+      defaultAvatar: require("../assets/img/defaultAvatar.jpg")
+    };
+  },
   props: {
     avatar: String,
     nickname: String,

@@ -2,33 +2,36 @@
   <fragment>
     <Header />
     <SearchForm />
-    <TeamMembers />
     <PlayerCard />
-    <EloProgress />
+    <template v-if="Object.keys(this.getData.error).length === 0">
+      <EloProgress />
+      <MatchHistory />
+    </template>
   </fragment>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import Header from "@/components/Header.vue";
 import SearchForm from "@/components/SearchForm.vue";
-import TeamMembers from "@/components/TeamMembers.vue";
 import PlayerCard from "@/components/PlayerCard.vue";
 import EloProgress from "@/components/EloProgress.vue";
+import MatchHistory from "@/components/MatchHistory.vue";
 
 export default {
   name: "Home",
   components: {
-    SearchForm,
     Header,
-    TeamMembers,
+    SearchForm,
     PlayerCard,
-    EloProgress
+    EloProgress,
+    MatchHistory
   },
   methods: mapActions(["fetchPlayerData"]),
   mounted() {
     this.fetchPlayerData(this.$route.params.nickname);
-  }
+  },
+  computed: mapGetters(["getData"])
 };
 </script>

@@ -1,6 +1,18 @@
 <template>
   <div class="section" id="elo">
-    <div v-if="getData.loading">Ładowanie</div>
+    <template v-if="this.getData.loading">
+      <content-loader
+        :height="100"
+        :width="800"
+        :speed="2"
+        primaryColor="#f3f3f3"
+        secondaryColor="#008000"
+      >
+        <rect x="17" y="21" rx="3" ry="3" width="749" height="13.7" />
+        <rect x="42" y="47.1" rx="3" ry="3" width="171" height="2.88" />
+        <rect x="244.49" y="47.1" rx="3" ry="3" width="504.51" height="2.88" />
+      </content-loader>
+    </template>
     <div v-else>
       <h2 class="section-heading">
         Postęp
@@ -60,21 +72,215 @@
           </div>
         </div>
       </div>
-      <!-- <div id="chart"></div> -->
+      <apexchart height="400px" id="chart" type="line" :options="options" :series="series" />
     </div>
   </div>
 </template>
 
 <script>
+import { ContentLoader } from "vue-content-loader";
 import { mapGetters } from "vuex";
+import VueApexCharts from "vue-apexcharts";
 
 export default {
   name: "EloProgress",
+  components: {
+    apexchart: VueApexCharts,
+    ContentLoader
+  },
   methods: {
     getLvlImg: function(lvl) {
       return require(`../assets/img/lvls/skill_level_${lvl}_svg.svg`);
     }
   },
-  computed: mapGetters(["getData"])
+  computed: {
+    ...mapGetters(["getData"]),
+    series: function() {
+      return [
+        {
+          name: "ELO",
+          data: this.getData.data.lastMatches.map(match => match.elo).reverse()
+        }
+      ];
+    },
+    options: function() {
+      return {
+        chart: {
+          id: "elo-history",
+          toolbar: {
+            show: false
+          },
+          width: "100%",
+          zoom: {
+            enabled: false
+          }
+        },
+        colors: ["#69b578"],
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+          labels: {
+            style: {
+              colors: "#bbb"
+            }
+          },
+          categories: this.getData.data.lastMatches
+            .map(match => match.map)
+            .reverse()
+        },
+        yaxis: {
+          labels: {
+            style: {
+              colors: "#bbb"
+            }
+          }
+        },
+        annotations: {
+          yaxis: [
+            {
+              y: 951,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "3 lvl"
+              }
+            },
+            {
+              y: 1101,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "4 lvl"
+              }
+            },
+            {
+              y: 1251,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "5 lvl"
+              }
+            },
+            {
+              y: 1401,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "6 lvl"
+              }
+            },
+            {
+              y: 1551,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "7 lvl"
+              }
+            },
+            {
+              y: 1701,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "8 lvl"
+              }
+            },
+            {
+              y: 1851,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "9 lvl"
+              }
+            },
+            {
+              y: 2001,
+              borderColor: "#3a7d44",
+              strokeDashArray: 0,
+              label: {
+                borderColor: "#3a7d44",
+                style: {
+                  color: "#fff",
+                  background: "#3a7d44",
+                  fontWeight: 700
+                },
+                text: "10 lvl"
+              }
+            }
+          ]
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        tooltip: {
+          theme: "dark"
+        },
+        markers: {
+          size: 5,
+          colors: "#3a7d44",
+          strokeColors: "#fff",
+          strokeWidth: 2,
+          strokeOpacity: 0.9,
+          strokeDashArray: 0,
+          fillOpacity: 1,
+          discrete: [],
+          shape: "circle",
+          radius: 2,
+          offsetX: 0,
+          offsetY: 0,
+          onClick: undefined,
+          onDblClick: undefined,
+          showNullDataPoints: true,
+          hover: {
+            size: undefined,
+            sizeOffset: 3
+          }
+        }
+      };
+    }
+  }
 };
 </script>

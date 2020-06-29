@@ -82,8 +82,7 @@ body {
 
 .grid-player {
 	grid-template-areas: 'header header header nsgt' 'searchform searchform searchform nsgt'
-		'profile profile profile nsgt' 'elo elo elo elo' 'chart chart chart chart'
-		'matchhistory matchhistory matchhistory matchhistory';
+		'profile profile profile nsgt' 'elo elo elo elo' 'matchhistory matchhistory matchhistory matchhistory';
 }
 
 .grid-home {
@@ -112,6 +111,7 @@ body {
 .section-heading {
 	font-weight: 400;
 	font-size: 1.25rem;
+	margin-bottom: 1.5em;
 	& span {
 		color: var(--light-green);
 	}
@@ -142,11 +142,6 @@ body {
 		text-transform: uppercase;
 		margin-bottom: .75em;
 	}
-}
-
-a:focus,
-button:focus {
-	outline: 2px solid var(--green);
 }
 
 .btn {

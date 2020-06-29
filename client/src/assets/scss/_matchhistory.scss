@@ -7,11 +7,13 @@
 	border-collapse: collapse;
 	min-width: 100%;
 	white-space: nowrap;
+	font-size: 0.9rem;
+	text-align: left;
 }
 
 .match-history__row--head th {
 	font-weight: 400;
-	text-align: left;
+	//text-align: left;
 	padding: 0.75em 0;
 	color: #bbb;
 	background-color: var(--dark-grey);
@@ -20,9 +22,9 @@
 .match-history__row td {
 	padding: 1em 0;
 }
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
 	.match-history__row td {
-		min-width: 150px;
+		min-width: 110px;
 	}
 }
 
@@ -64,12 +66,13 @@
 	color: #fff;
 	min-width: 67px;
 	text-transform: uppercase;
-}
-
-.match-history__badge--green {
-	background-color: #5ab528;
-}
-
-.match-history__badge--red {
-	background-color: #d64242;
+	&--wide {
+		min-width: 140px;
+	}
+	&--green {
+		background-color: #5ab528;
+	}
+	&--red {
+		background-color: #d64242;
+	}
 }

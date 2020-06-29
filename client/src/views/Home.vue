@@ -2,21 +2,18 @@
   <fragment>
     <Header />
     <SearchForm />
-    <TeamMembers />
   </fragment>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import SearchForm from "@/components/SearchForm.vue";
-import TeamMembers from "@/components/TeamMembers.vue";
 
 export default {
   name: "Home",
   components: {
-    SearchForm,
     Header,
-    TeamMembers
+    SearchForm
   }
 };
 </script>
