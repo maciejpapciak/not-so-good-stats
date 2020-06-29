@@ -22,6 +22,7 @@ app.use('/api/nsgt', require('./api/nsgt'));
 // Handle production
 if (process.env.NODE_ENV === 'production') {
 	app.use(helmet());
+	app.use(cors());
 	// Set static folder
 	app.use(express.static(__dirname + '/public/'));
 
