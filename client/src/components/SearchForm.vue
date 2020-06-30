@@ -24,7 +24,7 @@ export default {
   methods: {
     submitForm: function() {
       if (this.query) {
-        router.push({ name: "Player", params: { nickname: this.query } });
+        router.replace({ name: "Player", params: { nickname: this.query } });
       } else {
         this.$toast.error("Musisz wprowadzić nick", {
           position: "top-left",

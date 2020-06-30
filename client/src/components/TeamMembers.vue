@@ -6,7 +6,7 @@
     </h2>
     <ul class="team-members">
       <li :key="index" v-for="(member, index) in this.getTeamList.data" class="team-members__item">
-        <router-link :to="`/${member.nickname}`">
+        <router-link :to="`/${member.nickname}`" replace>
           <ProfileBadge
             :avatar="member.avatar"
             :nickname="member.nickname"
