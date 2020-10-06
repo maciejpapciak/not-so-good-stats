@@ -2,7 +2,7 @@
 	"name": "not-so-good-stats",
 	"version": "1.0.0",
 	"description": "An app to track stats from the Faceit platform",
-	"main": "server.js",
+	"main": "index.js",
 	"scripts": {
 		"start": "node server",
 		"server": "nodemon server",
@@ -12,13 +12,13 @@
 	"author": "Maciek Papciak",
 	"license": "ISC",
 	"dependencies": {
-		"concurrently": "^5.2.0",
+		"concurrently": "^5.3.0",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
 		"helmet": "^3.23.3",
 		"morgan": "^1.10.0",
-		"node-fetch": "^2.6.0"
+		"node-fetch": "^2.6.1"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.4"
