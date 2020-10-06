@@ -104,3 +104,7 @@ dist
 .tern-port
 
 *.env
+.deta/prog_info
+.deta/state
+.vscode/settings.json
+fly.toml
